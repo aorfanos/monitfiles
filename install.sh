@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chmod +x slack_mssgs/*
-ln -s slack_mssgs/* /usr/local/bin/
+chmod +x ${PWD}/slack_mssgs/*
+ln -s ${PWD}/slack_mssgs/* /usr/local/bin/
 
-cp conf.d/* /etc/monit/conf.d/ 
+cp ${PWD}/conf.d/* /etc/monit/conf.d/ 
