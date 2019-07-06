@@ -14,7 +14,7 @@ if children > 64 then stop #bring down the site so that we accommodate for the g
 if loadavg (15min) > 4 for 3 cycles then stop #same directive as above
 
 #check site too
-if failed host l2.aepvp.net port 80 protocol http
+if failed host gazzetta.gr port 443 protocol https
 	and request "/index.html"
 then restart
 	else if succeeded then exec "/bin/bash -c 'PROCESS=Site /usr/local/bin/is_up'"
