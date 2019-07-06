@@ -1,4 +1,4 @@
-SWHU=$(cat /etc/monit.d/slack-webhook-url) #slack-webhoot-url
+SWHU=$(cat /etc/monit/slack-webhook-url) #slack-webhoot-url
 
 COLOR=${MONIT_COLOR:-$([[ $MONIT_EVENT == *"succeeded"* ]] && echo good || echo danger)}
 TEXT=$(echo -e "$MONIT_EVENT: $MONIT_DESCRIPTION" | python3 -c "import json,sys;print(json.dumps(sys.stdin.read()))")
