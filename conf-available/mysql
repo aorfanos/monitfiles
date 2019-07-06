@@ -6,12 +6,12 @@ stop program = "/bin/systemctl stop mysql"
 
 if not exist then exec "/bin/bash /usr/local/bin/echo"
 if not exist then restart
-	if else succeeded then exec "/bin/bash /usr/local/bin/ok"
+	else if succeeded then exec "/bin/bash /usr/local/bin/ok"
 if 3 restarts within 3 cycles then exec "/bin/bash /usr/local/bin/manual"
 
 if failed unixsocket /var/run/mysqld/mysqld.sock then exec "/bin/bash /usr/local/bin/echo"
 if failed unixsocket /var/run/mysqld/mysqld.sock then restart
-	if else succeeded then exec "/bin/bash /usr/local/bin/ok"
+	else if succeeded then exec "/bin/bash /usr/local/bin/ok"
 if 3 restarts within 3 cycles then exec "/bin/bash /usr/local/bin/manual"
 
 if failed host 127.0.0.1 port 3306 then exec "/bin/bash /usr/local/bin/echo"
