@@ -1,0 +1,19 @@
+check process nginx with pidfile /var/run/nginx.pid
+start program = "/bin/systemctl start nginx"
+stop program = "/bin/systemctl stop nginx"
+
+#PID not found - nginx not running
+if not exist then exec "/bin/bash -c 'PROCESS=Nginx /usr/local/bin/is_down'"
+if not exist then restart
+	else if succeeded then exec "/bin/bash -c 'PROCESS=Nginx /usr/local/bin/is_up'"
+if 3 restarts within 3 cycles then exec "/bin/bash /usr/local/bin/manual"
+
+#Performance
+if totalmem > 300.0 MB for 5 cycles then restart
+if children > 64 then stop #bring down the site so that we accommodate for the gameserver
+if loadavg (15min) > 4 for 3 cycles then stop #same directive as above
+
+#check site too
+if failed host l2.aepvp.net port 80 protocol http
+	and request "index.html"
+then restart
