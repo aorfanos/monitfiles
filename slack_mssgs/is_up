@@ -1,0 +1,20 @@
+SWHU=$(cat /etc/monit/slack-webhook-url) #slack-webhoot-url
+
+TEXT=$(echo -e "$MONIT_EVENT: $MONIT_DESCRIPTION" | python3 -c "import json,sys;print(json.dumps(sys.stdin.read()))")
+
+PAYLOAD="{
+  \"attachments\": [
+    {
+      \"title\": \"$PROCESS at $MONIT_HOST is UP!\",
+      \"text\": \"$PROCESS is back alive. Well done ;\)\",
+      \"color\": \"\158000",
+      \"mrkdwn_in\": [\"text\"],
+      \"fields\": [
+        { \"title\": \"Date\", \"value\": \"$MONIT_DATE\", \"short\": true },
+        { \"title\": \"Host\", \"value\": \"$MONIT_HOST\", \"short\": true }
+      ]
+    }
+  ]
+}"
+
+curl -s -X POST --data-urlencode "payload=$PAYLOAD" $SWHU
