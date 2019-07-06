@@ -5,13 +5,12 @@ TEXT=$(echo -e "$MONIT_EVENT: $MONIT_DESCRIPTION" | python3 -c "import json,sys;
 PAYLOAD="{
   \"attachments\": [
     {
-      \"title\": \"$PROCESS at $HOSTNAME is UP!\",
-      \"text\": \"$PROCESS is back alive. Well done\",
-      \"color\": \"158000\",
+      \"text\": \"$MONIT_EVENT cannot be auto-recovered. Please seek help from sysadmin\",
+      \"color\": \"00308F\",
       \"mrkdwn_in\": [\"text\"],
       \"fields\": [
         { \"title\": \"Date\", \"value\": \"$MONIT_DATE\", \"short\": true },
-        { \"title\": \"Host\", \"value\": \"$HOSTNAME\", \"short\": true }
+        { \"title\": \"Host\", \"value\": \"$HOST\", \"short\": true }
       ]
     }
   ]
