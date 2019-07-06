@@ -1,3 +1,6 @@
+#WARN: config file is buggy. does not handle mysql state
+#TODO: fix
+
 check process mysql with pidfile /var/run/mysql/mysqld.pid
 start program = "/bin/systemctl start mysql"
 stop program = "/bin/systemctl stop mysql"
