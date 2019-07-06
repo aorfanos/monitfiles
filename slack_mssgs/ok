@@ -4,7 +4,7 @@ PAYLOAD="{
   \"attachments\": [
     {
       \"title\": \"$PROCESS at $MONIT_HOST is OK!\",
-      \"color\": \"\158000",
+      \"color\": \"158000\",
       \"mrkdwn_in\": [\"text\"],
       \"fields\": [
         { \"title\": \"Date\", \"value\": \"$MONIT_DATE\", \"short\": true },
