@@ -1,0 +1,14 @@
+check process sshd with pidfile /var/run/sshd.pid
+group system
+group sshd
+start program = "/bin/systemctl start ssh"
+stop  program = "/bin/systemctl stop ssh"
+
+if not exist then exec "/bin/bash -c 'PROCESS=SSH /usr/local/bin/is_down'"
+if not exist then restart
+	else if succeeded then exec "/bin/bash -c 'PROCESS=SSH /usr/local/bin/is_up'"
+
+if failed host localhost port 22 with proto ssh then exec "/bin/bash -c 'PROCESS=SSH /usr/local/bin/is_down'"  
+if failed host localhost port 22 with proto ssh then restart
+  if 3 restarts within 3 cycles then exec "/bin/bash /usr/local/bin/manual"
+
