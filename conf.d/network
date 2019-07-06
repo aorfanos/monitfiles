@@ -1,0 +1,9 @@
+check network interface eth0
+start program = "/bin/systemctl start networking"
+stop program = "/bin/systemctl stop networking"
+
+# if down
+if failed link then exec "/bin/bash /usr/local/bin/echo"
+
+# if close to full saturation
+if saturation > 75% then exec "/bin/bash /usr/local/bin/echo"
