@@ -1,0 +1,17 @@
+check system $HOSTNAME
+
+#CPU
+if cpu usage > 50% then exec "/bin/bash /usr/local/bin/warn"
+if cpu usage > 80% then exec "/bin/bash /usr/local/bin/echo"
+	else if succeeded then exec "/bin/bash -c 'PROCESS=CPU_Usage /usr/local/bin/ok'"
+if loadavg (1min) > 2 then exec "/bin/bash /usr/local/bin/warn"
+if loadavg (5min) > 4 then exec "/bin/bash /usr/local/bin/echo"
+
+#MEM
+if memory usage > 50% then exec "/bin/bash /usr/local/bin/warn"
+if memory usage > 85% then exec "/bin/bash /usr/local/bin/echo"
+	else if succeeded then exec "/bin/bash -c 'PROCESS=RAM /usr/local/bin/ok'"
+
+#SWAP
+if swap usage > 5% then exec "/bin/bash /usr/local/bin/warn"
+
