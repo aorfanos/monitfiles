@@ -24,6 +24,7 @@ Debian Jessie or newer
 git clone https://github.com/aorfanos/monitfiles.git
 ```
 - [Setup a Slack incoming webhook](https://api.slack.com/incoming-webhooks)
+- Create the file `slack-webhook-url` at `/etc/monit` and copy/paste the URL of the Slack Integrated Webhook in it
 - Run installer (this will set up the Slack webhooks)
 
 ```bash
