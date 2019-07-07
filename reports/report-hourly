@@ -3,11 +3,11 @@
 echo "Hourly report for $HOSTNAME"
 
 echo "System info"
-echo "```"
+echo '```'
 top -n1 | head -4
-echo "```"
+echo '```'
 
 echo "Network Diagnostics"
-echo "```"
+echo '```'
 mtr --no-dns --report aorfanos.com
-echo "```"
+echo '```'
