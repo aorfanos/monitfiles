@@ -45,3 +45,6 @@ You should shortly see messages like the following coming up on Slack!
 ### Notifications
 You can find more info regarding the notifications [here](https://imgur.com/a/ceCoVqH).
 
+### TODO: Doc for writing own checks
+Some info on the kind of curl requests Monit sends, and how to use the scripts to write your own system/process/fs/net checks. 
+
